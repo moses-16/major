@@ -16,7 +16,7 @@ public class User {
     private  Integer id;
     @NotEmpty
     @Column(nullable = false)
-    private  String fistName;
+    private  String firstName;
 
     private  String lastName;
 
@@ -24,7 +24,7 @@ public class User {
     @NotEmpty
     @Email(message = "{errors.invalid_email}")
     private String email;
-    @NotEmpty
+
     private  String password;
 
     @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
@@ -38,13 +38,22 @@ public class User {
 
     public User(User user) {
 
-        this.fistName = user.getFistName();
+        this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.roles = user.getRoles();
     }
     public  User(){
+
+    }
+
+    public User(Integer id, String firstName, String lastName, String email, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
 
     }
 }
